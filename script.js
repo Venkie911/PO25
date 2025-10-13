@@ -36,7 +36,7 @@ class Raster {
   }
 }
 
-class Jos {
+ class Jos {
   constructor() {
     this.x = 400;
     this.y = 300;
