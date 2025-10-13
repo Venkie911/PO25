@@ -12,12 +12,26 @@ class Raster {
   teken() {
     push();
     noFill();
+
+    stroke(0, 0, 255);  
+    strokeWeight(4);    
+  
+    rect(0, 0, this.aantalKolommen * this.celGrootte, this.aantalRijen * this.celGrootte);
+    
     stroke('grey');
-    for (var rij = 0;rij < this.aantalRijen;rij++) {
-      for (var kolom = 0;kolom < this.aantalKolommen;kolom++) {
-        rect(kolom*this.celGrootte,rij*this.celGrootte,this.celGrootte,this.celGrootte);
-      }
+    strokeWeight(1); 
+
+    for (let rij = 1; rij < this.aantalRijen; rij++) {
+      let y = rij * this.celGrootte;
+      line(0, y, this.aantalKolommen * this.celGrootte, y);
     }
+
+   
+    for (let kolom = 1; kolom < this.aantalKolommen; kolom++) {
+      let x = kolom * this.celGrootte;
+      line(x, 0, x, this.aantalRijen * this.celGrootte);
+    }
+
     pop();
   }
 }
@@ -126,6 +140,12 @@ function setup() {
 
 function draw() {
   background(brug);
+
+  stroke(0, 0, 255); 
+  strokeWeight(10);   
+  noFill();           
+  rect(0, 0, canvas.width, canvas.height); 
+
   raster.teken();
   eve.beweeg();
   alice.beweeg();
@@ -141,7 +161,8 @@ function draw() {
   if (eve.gehaald) {
     background('green');
     fill('white');
-    text("Je hebt gewonnen!",30,300);
+    text("Je hebt gewonnen!", 30, 300);
     noLoop();
   }
 }
+
