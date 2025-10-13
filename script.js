@@ -122,6 +122,11 @@ function setup() {
   bob = new Vijand(600,400);
   bob.stapGrootte = 1*eve.stapGrootte;
   bob.sprite = loadImage("images/sprites/Bob100px/Bob.png");  
+
+  cindy = new Vijand(300, 100); 
+  cindy.stapGrootte = 1 * eve.stapGrootte;
+  cindy.sprite = loadImage("images/sprites/Alice100px/Alice.png");
+
 }
 
 function draw() {
@@ -140,8 +145,10 @@ function draw() {
   eve.toon();
   alice.toon();
   bob.toon();
+  cindy.beweeg();
+  cindy.toon();
 
-  if (eve.wordtGeraakt(alice) || eve.wordtGeraakt(bob)) {
+  if (eve.wordtGeraakt(alice) || eve.wordtGeraakt(bob) || eve.wordtGeraakt(cindy)) {
     noLoop();
   }
 
