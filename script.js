@@ -33,19 +33,19 @@ class Raster {
   }
 
   beweeg() {
-    if (keyIsDown(LEFT_ARROW)) {
+    if (keyIsDown(65)) {
       this.x -= this.stapGrootte;
       this.frameNummer = 2;
     }
-    if (keyIsDown(RIGHT_ARROW)) {
+    if (keyIsDown(68)) {
       this.x += this.stapGrootte;
       this.frameNummer = 1;
     }
-    if (keyIsDown(UP_ARROW)) {
+    if (keyIsDown(87)) {
       this.y -= this.stapGrootte;
       this.frameNummer = 4;
     }
-    if (keyIsDown(DOWN_ARROW)) {
+    if (keyIsDown(83)) {
       this.y += this.stapGrootte;
       this.frameNummer = 5;
     }
@@ -157,6 +157,8 @@ function draw() {
     fill('white');
     text("Je hebt gewonnen!", 30, 300);
     noLoop();
+
+    
   }
 }
 
