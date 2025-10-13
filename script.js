@@ -12,26 +12,12 @@ class Raster {
   teken() {
     push();
     noFill();
-
-    stroke(0, 0, 255);  
-    strokeWeight(4);    
-  
-    rect(0, 0, this.aantalKolommen * this.celGrootte, this.aantalRijen * this.celGrootte);
-    
     stroke('grey');
-    strokeWeight(1); 
-
-    for (let rij = 1; rij < this.aantalRijen; rij++) {
-      let y = rij * this.celGrootte;
-      line(0, y, this.aantalKolommen * this.celGrootte, y);
+    for (var rij = 0;rij < this.aantalRijen;rij++) {
+      for (var kolom = 0;kolom < this.aantalKolommen;kolom++) {
+        rect(kolom*this.celGrootte,rij*this.celGrootte,this.celGrootte,this.celGrootte);
+      }
     }
-
-   
-    for (let kolom = 1; kolom < this.aantalKolommen; kolom++) {
-      let x = kolom * this.celGrootte;
-      line(x, 0, x, this.aantalRijen * this.celGrootte);
-    }
-
     pop();
   }
 }
@@ -118,7 +104,7 @@ function setup() {
   textFont("Verdana");
   textSize(90);
 
-  raster = new Raster(6,9);
+  raster = new Raster(12,18);
 
   raster.berekenCelGrootte();
 
@@ -139,13 +125,14 @@ function setup() {
 }
 
 function draw() {
+  push();
   background(brug);
-
   stroke(0, 0, 255); 
-  strokeWeight(10);   
+  strokeWeight(5);  
+  
   noFill();           
-  rect(0, 0, canvas.width, canvas.height); 
-
+  rect(5, 5, canvas.width - 10, canvas.height - 10); 
+  pop();
   raster.teken();
   eve.beweeg();
   alice.beweeg();
