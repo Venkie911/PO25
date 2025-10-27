@@ -1,15 +1,41 @@
+var bal = {
+  diameter: 40,
+  straal: null,
+  x: null,
+  y: null,
+  snelheidX: 8,
+  snelheidY: 5,
+
+  beweeg() {
+    this.x += this.snelheidX;
+    this.y += this.snelheidY;
+
+    if (this.x < this.straal || this.x > canvas.width - this.straal) {
+      this.snelheidX *= -1;
+    }
+    if (this.y < this.straal || this.y > canvas.height - this.straal) {
+      this.snelheidY *= -1;
+    }
+  },
+
+  teken() {
+    fill(255,255,255,1);
+    ellipse(this.x,this.y,this.diameter);
+  }
+}
+
 class Raster {
   constructor(r, k) {
     this.aantalRijen = r;
     this.aantalKolommen = k;
     this.celGrootte = null;
   }
-
+    
   berekenCelGrootte() {
     this.celGrootte = canvas.width / this.aantalKolommen;
   }
-
-  teken() {
+  
+  teken() {   
     push();
     noFill();
     stroke('grey');
@@ -20,8 +46,8 @@ class Raster {
     }
     pop();
   }
-}
-
+    }
+        
 class Jos {
   constructor() {
     this.x = 400;
@@ -149,6 +175,9 @@ function draw() {
   rect(5, 5, canvas.width - 10, canvas.height - 10);
   pop();
 
+  bal.beweeg();
+  bal.teken();
+  
   raster.teken();
   eve.beweeg();
   alice.beweeg();
